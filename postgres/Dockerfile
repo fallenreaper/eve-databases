@@ -5,7 +5,7 @@ ENV POSTGRES_USER postgres
 ENV POSTGRES_DB evesde
 
 RUN apt-get update
-RUN apt-get install -y curl
+RUN apt-get install -y curl bzip2
 
 RUN curl -k -o postgres-schema-latest.dmp.bz2 https://www.fuzzwork.co.uk/dump/postgres-schema-latest.dmp.bz2
 RUN bzip2 -d postgres-schema-latest.dmp.bz2
