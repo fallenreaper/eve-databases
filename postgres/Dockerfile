@@ -11,6 +11,5 @@ RUN curl -k -o postgres-schema-latest.dmp.bz2 https://www.fuzzwork.co.uk/dump/po
 RUN bzip2 -d postgres-schema-latest.dmp.bz2
 RUN rm postgres-schema-latest.dmp.bz2
 
-COPY postgres-schema-latest.dmp .
 COPY init.sh /docker-entrypoint-initdb.d/
 COPY create_role.sql /docker-entrypoint-initdb.d/
