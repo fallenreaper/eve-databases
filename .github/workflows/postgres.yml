@@ -55,6 +55,7 @@ jobs:
         name: Docker Buildx (push)
         if: success() && github.event_name != 'pull_request'
         run: |
+          echo $(ls)
           cd postgres && chmod 755 run.sh && ./run.sh $(date -u +'%Y%m%d') T
       -
         name: Inspect image
