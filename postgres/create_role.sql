@@ -1,0 +1,1 @@
+create role yaml with login encrypted password 'password';
