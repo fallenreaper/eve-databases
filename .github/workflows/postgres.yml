@@ -60,7 +60,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{steps.prepare.docker_image}}:${{steps.prepare.outputs.version}}
+          tags: ${{steps.prepare.outputs.docker_image}}:${{steps.prepare.outputs.version}}
           context: postgres/.
       -
         name: Inspect image
