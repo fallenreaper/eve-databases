@@ -49,10 +49,6 @@ jobs:
           config-inline: |
             [worker.oci]
               platforms= [ "linux/amd64", "linux/arm64", "linux/arm/v7"]
-#       -
-#         name: Docker Buildx (build)
-#         run: |
-#           cd postgres && chmod 755 run.sh && ./run.sh $(date -u +'%Y%m%d')
       -
         name: Login to DockerHub
         if: success() && github.event_name != 'pull_request'
@@ -66,8 +62,3 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: postgres/.
-      -
-        name: Inspect image
-        if: always() && github.event_name != 'pull_request'
-        run: |
-          docker buildx imagetools inspect ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }}
