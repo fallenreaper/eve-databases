@@ -12,3 +12,5 @@ RUN bzip2 -d postgres-schema-latest.dmp.bz2
 
 COPY init.sh /docker-entrypoint-initdb.d/
 COPY create_role.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 5432
