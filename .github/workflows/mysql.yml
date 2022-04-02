@@ -19,7 +19,7 @@ jobs:
       -
         name: Prepare Variables
         run: |
-          DOCKER_IMAGE=fallenreaper/eve-postgres
+          DOCKER_IMAGE=fallenreaper/eve-mysql
           VERSION=$(date -u +'%Y%m%d') 
           
           if [ "${{ github.event_name }}" = "schedule" ]; then
