@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v3
       -
         name: Prepare Variables
+        id: prepare
         run: |
           DOCKER_IMAGE=fallenreaper/eve-mysql
           VERSION=$(date -u +'%Y%m%d') 
@@ -32,6 +33,7 @@ jobs:
           
           echo ::set-output name=docker_image::${DOCKER_IMAGE}
           echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tags::${TAGS}
         
       -
         name: Login to DockerHub
