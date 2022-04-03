@@ -15,7 +15,7 @@ RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlin
 
 RUN wget -o /tmp/db.bacpac https://www.fuzzwork.co.uk/dump/mssql-latest.bacpac
 
-RUN ( /opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started" \
+RUN ( /opt/mssql/bin/sqlservr & ) && sleep 10 | grep -q "Service Broker manager has started" \
     && /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:${DBNAME} /tu:sa /tp:$SA_PASSWORD /sf:/tmp/db.bacpac \
     && rm /tmp/db.bacpac \
     && pkill sqlservr
