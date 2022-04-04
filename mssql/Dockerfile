@@ -18,10 +18,12 @@ RUN wget -progress=bar:force -q -O /mssql-latest.bacpac https://www.fuzzwork.co.
 # RUN ( /opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started" \
 #     && /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:mssql-latest.bacpac \
 #     && pkill sqlservr
-RUN ( /opt/mssql/bin/sqlservr & ) && sleep 10
-RUN echo "I want to know what these Variables are: $DBNAME, $SA_PASSWORD"
-RUN ls -al
-RUN /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:/mssql-latest.bacpac 
+# RUN ( /opt/mssql/bin/sqlservr & ) && sleep 10
+# RUN echo "I want to know what these Variables are: $DBNAME, $SA_PASSWORD"
+# RUN ls -al
 
+RUN ( /opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started" \
+    /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:/mssql-latest.bacpac 
+    && pkill sqlservr
 #Cleanup
 RUN rm mssql-latest.bacpac sqlpackage.zip
