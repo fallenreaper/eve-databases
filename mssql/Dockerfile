@@ -19,8 +19,7 @@ RUN wget -progress=bar:force -q https://www.fuzzwork.co.uk/dump/mssql-latest.bac
 #     && /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:mssql-latest.bacpac \
 #     && pkill sqlservr
 RUN ( /opt/mssql/bin/sqlservr & ) && sleep 10
-RUN /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:mssql-latest.bacpac \
-    && pkill sqlservr
+RUN /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:mssql-latest.bacpac 
 
 #Cleanup
 RUN rm mssql-latest.bacpac sqlpackage.zip
