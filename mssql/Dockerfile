@@ -23,7 +23,7 @@ RUN wget -progress=bar:force -q -O /mssql-latest.bacpac https://www.fuzzwork.co.
 # RUN ls -al
 
 RUN ( /opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started" \
-    /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:/mssql-latest.bacpac 
+    /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:/mssql-latest.bacpac \
     && pkill sqlservr
 #Cleanup
 RUN rm mssql-latest.bacpac sqlpackage.zip
