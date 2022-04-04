@@ -13,9 +13,11 @@ RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlin
     && unzip -qq sqlpackage.zip -d /opt/sqlpackage \
     && chmod +x /opt/sqlpackage/sqlpackage
 
-RUN wget -o /tmp/db.bacpac https://www.fuzzwork.co.uk/dump/mssql-latest.bacpac
-RUN (/opt/mssql/bin/sqlservr & ) && sleep 10
-RUN /opt/sqlpackage/sqlpackage --version
-RUN /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:/tmp/db.bacpac \
+RUN wget -progress=bar:force -q https://www.fuzzwork.co.uk/dump/mssql-latest.bacpac
+RUN ( /opt/mssql/bin/sqlservr & ) | grep -q "Service Broker manager has started" \
+    && /opt/sqlpackage/sqlpackage /a:Import /tsn:. /tdn:$DBNAME /tu:sa /tp:$SA_PASSWORD /sf:mssql-latest.bacpac \
     && rm /tmp/db.bacpac \
     && pkill sqlservr
+
+#Cleanup
+RUN rm mssql-latest.bacpac sqlpackage.zip
