@@ -57,10 +57,11 @@ jobs:
       -
         name: Docker Buildx (Build and Push)
         if: success() && github.event_name != 'pull_request'
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           push: true
           tags: ${{steps.prepare.outputs.docker_image}}:${{steps.prepare.outputs.version}}
+          platforms: linux/amd64,linux/arm64,linux/s390x,linux/arm/v7,linux/arm/v6
           context: postgres/.
       -
         name: Inspect image
