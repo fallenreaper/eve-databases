@@ -58,5 +58,5 @@ jobs:
         with:
           push: true
           tags: ${{steps.prepare.outputs.docker_image}}:${{steps.prepare.outputs.version}}
-          platforms: linux/amd64,linux/arm64,linux/s390x,linux/arm/v7,linux/arm/v6
+          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
           context: mssql/.
