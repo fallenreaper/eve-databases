@@ -1,4 +1,4 @@
-name: Docker Image CI MSSQL buildx
+name: Docker Image CI MSSQL
 
 on:
   schedule:
