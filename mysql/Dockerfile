@@ -1,4 +1,3 @@
-# FROM mysql:latest
 FROM mysql:5.7
 ENV MYSQL_DATABASE evesde
 ENV MYSQL_ROOT_PASSWORD password
