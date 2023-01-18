@@ -10,6 +10,6 @@ The purpose of this is to test Github Actions in order to set up CICD Pipelines 
 
 As of Right now, it will pull and build the Eve Online Database in order to consume private or publically.  This database though was never containerized.  That is where this comes in.
 
-If you have any questions please react out.
+If you have any questions please reach out.
 
 Enjoy.
