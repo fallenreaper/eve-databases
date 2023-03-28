@@ -12,7 +12,7 @@ As of Right now, it will pull and build the Eve Online Database in order to cons
 
 If you have any questions please reach out.
 
-Enjy.
+Enjoy.
 
 #Notes
 
