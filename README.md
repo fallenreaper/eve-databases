@@ -12,4 +12,6 @@ As of Right now, it will pull and build the Eve Online Database in order to cons
 
 If you have any questions please reach out.
 
+Notes:  If needed, I can create different builds for additional DBMS, but these are the most common ive seen consumed.
+
 Enjoy.
