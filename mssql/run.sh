@@ -6,9 +6,7 @@ then
 	exit 1
 fi
 DATE=${1}
-rm mssql-latest.bacpac
 
-curl -k -o mssql-latest.bacpac https://www.fuzzwork.co.uk/dump/mssql-latest.bacpac
 # docker buildx build -t fallenreaper/eve-mysql:$DATE --platform linux/amd64,linux/arm64,linux/arm/v7 --push  -t fallenreaper/eve-mysql .
 
 docker build -t fallenreaper/eve-mssql:latest .
