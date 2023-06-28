@@ -43,5 +43,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{build.outputs.TAGS}}
+          tags: ${{needs.build.outputs.TAGS}}
           context: mssql/.
