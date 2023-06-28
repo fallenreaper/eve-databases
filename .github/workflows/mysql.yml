@@ -6,7 +6,7 @@ on:
   push:
     branches: [ master ]
 env:
-  DOCKER_IMAGE: falleneraper/eve-mysql
+  DOCKER_IMAGE: fallenreaper/eve-mysql
 jobs:
   build:
     runs-on: ubuntu-latest
