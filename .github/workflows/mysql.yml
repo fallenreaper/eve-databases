@@ -27,8 +27,6 @@ jobs:
           fi
           
           echo "TAGS=${TAGS}" >> "$GITHUB_OUTPUT"
-          echo "TAGS=${TAGS}" >> "$GITHUB_OUTPUT"
-          echo "TAGS=${TAGS}" >> "$GITHUB_OUTPUT"
         
       - name: Login to DockerHub
         if: success() && github.event_name != 'pull_request'
