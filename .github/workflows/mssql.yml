@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      TAGS: ${{build.prepare.TAGS}}
+      TAGS: ${{steps.prepare.TAGS}}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
