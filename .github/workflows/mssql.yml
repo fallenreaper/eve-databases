@@ -22,7 +22,7 @@ jobs:
             VERSION=nightly
           fi
           TAGS="${{ENV.DOCKER_IMAGE}}:${VERSION}"
-          TAGS="$TAGS,${{env.DOCKER_IMAGE}}:latest"
+          TAGS="$TAGS,${{ENV.DOCKER_IMAGE}}:latest"
           echo "TAGS=$TAGS" >> "$GITHUB_OUTPUT"
           echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Set up QEMU
