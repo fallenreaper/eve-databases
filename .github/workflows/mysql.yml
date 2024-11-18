@@ -22,9 +22,9 @@ jobs:
             VERSION=nightly
           fi
           TAGS="${{env.DOCKER_IMAGE}}:${VERSION}"
-          TAGS="$TAGS --tag ${{env.DOCKER_IMAGE}}:latest"
-          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-          echo "tags=${TAGS}" >> "$GITHUB_OUTPUT"
+          TAGS="$TAGS,${{env.DOCKER_IMAGE}}:latest"
+          echo "VERSION=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "TAGS=${TAGS}" >> "$GITHUB_OUTPUT"
         
       - name: Login to DockerHub
         if: success() && github.event_name != 'pull_request'
@@ -37,7 +37,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags:
-            - ${{env.DOCKER_IMAGE}}:${{steps.prepare.outputs.version}}
-            - ${{env.DOCKER_IMAGE}}:latest
+          tags: ${{steps.prepare.outputs.TAGS}}
           context: mysql/.
