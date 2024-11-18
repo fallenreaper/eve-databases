@@ -21,11 +21,10 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then
             VERSION=nightly
           fi
-
           TAGS="--tag ${{env.DOCKER_IMAGE}}:${VERSION}"
-          TAGS="$TAGS --tag ${{env.DOCKER_IMAGE}}:latest"
-
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          TAGS="$TAGS,${{env.DOCKER_IMAGE}}:latest"
+          echo "TAGS=$TAGS" >> "$GITHUB_OUTPUT"
+          echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -45,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{env.DOCKER_IMAGE}}:${{steps.prepare.outputs.version}}
+          tags: ${{steps.prepare.outputs.TAGS}}
           platforms: linux/amd64,linux/arm64,linux/s390x,linux/arm/v7,linux/arm/v6
           context: postgres/.
       -
