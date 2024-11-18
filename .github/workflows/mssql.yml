@@ -22,7 +22,8 @@ jobs:
             VERSION=nightly
           fi
           TAGS="${{ENV.DOCKER_IMAGE}}:${VERSION}"
-          TAGS="$TAGS --tag ${{env.DOCKER_IMAGE}}:latest"
+          TAGS="$TAGS,${{env.DOCKER_IMAGE}}:latest"
+          echo "TAGS=$TAGS" >> "$GITHUB_OUTPUT"
           echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -39,7 +40,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags:
-            - ${{env.DOCKER_IMAGE}}:${{steps.prepare.outputs.VERSION}}
-            - ${{env.DOCKER_IMAGE}}:latest
+          tags: ${{steps.prepare.outputs.TAGS}}
           context: mssql/.
