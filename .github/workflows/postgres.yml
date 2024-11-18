@@ -21,7 +21,7 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then
             VERSION=nightly
           fi
-          TAGS="--tag ${{env.DOCKER_IMAGE}}:${VERSION}"
+          TAGS="${{env.DOCKER_IMAGE}}:${VERSION}"
           TAGS="$TAGS,${{env.DOCKER_IMAGE}}:latest"
           echo "TAGS=$TAGS" >> "$GITHUB_OUTPUT"
           echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
