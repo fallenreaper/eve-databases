@@ -34,8 +34,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Docker Build & Push
         if: success() && github.event_name != 'pull_request'
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{env.DOCKER_IMAGE}}:${{steps.prepare.outputs.version}}
+          tags:
+            - ${{env.DOCKER_IMAGE}}:${{steps.prepare.outputs.version}}
+            - ${{env.DOCKER_IMAGE}}:latest
           context: mysql/.
