@@ -17,3 +17,8 @@ Enjoy.
 #Notes
 
 - If needed, I can create different builds for additional DBMS, but these are the most common ive seen consumed.
+
+
+#Additional Information
+
+- I have hosting services, servers, and cloud infrastructure to assist in launching and maintaining Databases for clients with minimal to no downtime and redundancy
