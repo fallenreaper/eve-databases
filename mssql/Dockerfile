@@ -7,8 +7,10 @@ ENV DBNAME=evesde
 
 EXPOSE 1433
 
-RUN sudo apt-get update \
-    && sudo apt-get install unzip -y
+RUN apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+    && apt-get update \
+    && apt-get install unzip -y
 RUN wget -progress=bar:force -q -O sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2165213 \
     && unzip -qq sqlpackage.zip -d /opt/sqlpackage \
     && chmod +x /opt/sqlpackage/sqlpackage
