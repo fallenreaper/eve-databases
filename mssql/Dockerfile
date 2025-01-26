@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/mssql/server:2017-latest
+FROM mcr.microsoft.com/mssql/server:2017-CU31-GDR2-ubuntu-18.04
 
 ENV ACCEPT_EULA=Y
 ENV SA_PASSWORD=Password123!
