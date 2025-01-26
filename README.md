@@ -21,5 +21,4 @@ Enjoy.
 
 #Additional Information
 
-- Currently, it seems that MSSQL is currently having some difficulties, and will be looking into it as i get access to OS with the correct architecture.
 - I have hosting services, servers, and cloud infrastructure to assist in launching and maintaining Databases for clients with minimal to no downtime and redundancy
