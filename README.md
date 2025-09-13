@@ -25,4 +25,4 @@ Enjoy.
 
 #Additional Information
 
-- I have hosting services, servers, and cloud infrastructure to assist in launching and maintaining Databases for clients with minimal to no downtime and redundancy
+- I have hosting services, servers, and cloud infrastructure to assist in launching and maintaining Databases for clients with minimal to no downtime and redundancy.  Reach out to me on Twitter/X or here for quotes etc.
