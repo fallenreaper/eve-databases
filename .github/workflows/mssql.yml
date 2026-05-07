@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Check for changes
         id: check_changes
         run: |
@@ -73,6 +75,13 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          git fetch origin "$BRANCH"
+          git pull --rebase origin "$BRANCH" || true
           git add .mssql-size
-          git commit -m "Update mssql database size check" || true
-          git push || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update mssql database size check"
+            git push origin "$BRANCH"
+          else
+            echo "No new changes to commit after syncing with remote."
+          fi
