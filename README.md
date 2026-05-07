@@ -25,4 +25,6 @@ Enjoy.
 
 #Additional Information
 
+- Updated workflows to trigger daily but not necessarily build
+
 - I have hosting services, servers, and cloud infrastructure to assist in launching and maintaining Databases for clients with minimal to no downtime and redundancy.  Reach out to me on Twitter/X or here for quotes etc.
