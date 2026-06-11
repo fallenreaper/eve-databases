@@ -5,10 +5,8 @@ ENV MYSQL_USER mysql
 ENV MYSQL_PASSWORD password
 
 RUN yum install -y bzip2 curl
-RUN curl -k -o mysql-latest.tar.bz2 https://www.fuzzwork.co.uk/dump/mysql-latest.tar.bz2 \
-    && bzip2 -d mysql-latest.tar.bz2 \
-    && tar -xvf mysql-latest.tar \
-    && mv sde*/*.sql /docker-entrypoint-initdb.d/ \
-    && rm -rf sde* *.tar
+RUN curl -k -o latest-mysql.sql.gz https://www.fuzzwork.co.uk/dump/latest-mysql.sql.gz \
+    && gunzip latest-mysql.sql.gz \
+    && mv latest-mysql.sql /docker-entrypoint-initdb.d/ 
 
 EXPOSE 3306

@@ -18,7 +18,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          REMOTE_URL="https://www.fuzzwork.co.uk/dump/mysql-latest.tar.bz2"
+          REMOTE_URL="https://www.fuzzwork.co.uk/dump/latest-mysql.sql.gz"
           REMOTE_SIZE=$(curl -sI "$REMOTE_URL" | grep -i content-length | awk '{print $2}' | tr -d '\r')
 
           # Get the last known size from a file in the repo
